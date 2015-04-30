@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane fx:controller="trabalho.FXMLDocumentController" 
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+    
+    <Label text="ID:" GridPane.rowIndex="0"  GridPane.columnIndex="0"    /> 
+    <TextField fx:id="tfid"  GridPane.rowIndex="0" GridPane.columnIndex="1" />
+    <Label text="Nome:" GridPane.rowIndex="1"  GridPane.columnIndex="0"    /> 
+    <TextField fx:id="tfnome"  GridPane.rowIndex="1" GridPane.columnIndex="1" />
+    <Label text="Fone:" GridPane.rowIndex="2"  GridPane.columnIndex="0"/>
+    <TextField fx:id="tffone"  GridPane.rowIndex="2" GridPane.columnIndex="1"  />
+    <Button text="Salvar" onAction="#aoClicarBtnSalvar" fx:id="btnSalvar" GridPane.rowIndex="3"  GridPane.columnIndex="0"   />
+    <Button text="Excluir" onAction="#aoClicarBtnExcluir" fx:id="btnExcluir" GridPane.rowIndex="3"  GridPane.columnIndex="1"   />
+    <Button text="Buscar" onAction="#aoClicarBtnBuscarPorId" fx:id="btnBuscar" GridPane.rowIndex="3"  GridPane.columnIndex="2"   />
+    <Label  GridPane.rowIndex="4" GridPane.columnSpan="3" fx:id="lbmsg"     /> 
+    
+    
+    
+    <TableView fx:id="tvClientes" GridPane.columnIndex="0" GridPane.rowIndex="1">
+           
+    </TableView>
+
+
+
+</GridPane>

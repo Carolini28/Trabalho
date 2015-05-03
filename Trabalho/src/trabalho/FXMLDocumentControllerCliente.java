@@ -23,8 +23,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 
-public class FXMLDocumentController implements Initializable {
+public class FXMLDocumentControllerCliente implements Initializable, ControlledScreen{
 
+    ScreensController myController;
+    
     @FXML
     private TextField tfnome;
 
@@ -42,9 +44,14 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private TableView<Cliente> tvClientes;
-
+    
     //Gerenciador de dados // CRUD
     ClienteService cliService = new ClienteService();
+    
+    
+    public void setScreenParent(ScreensController screenParent){
+        myController = screenParent;
+    }
 
     @FXML
     private void aoClicarBtnSalvar(ActionEvent event) {
@@ -61,7 +68,7 @@ public class FXMLDocumentController implements Initializable {
             lbmsg.setText("Salvo com Sucesso!");
         } catch (ServiceException ex) {
             lbmsg.setText(ex.getMessage());
-            Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FXMLDocumentControllerCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -125,9 +132,12 @@ public class FXMLDocumentController implements Initializable {
         
         tvClientes.getColumns().addAll(idCliente, nome, telefone, emailCol);
         tvClientes.setItems(dados);
-        System.out.println(listaCliente);
-        
+   
        
+    }
+    @FXML
+     public void goToScreenP(ActionEvent event){
+        myController.setScreen(Trabalho.screen1ID);
     }
 
 }

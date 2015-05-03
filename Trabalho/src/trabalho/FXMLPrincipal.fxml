@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="trabalho.FXMLPrincipalController">
+  <children>
+    <GridPane layoutX="61.0" layoutY="14.0" prefHeight="353.0" prefWidth="479.0">
+      <children>
+        <Button blendMode="GREEN" contentDisplay="CENTER" disable="false" mnemonicParsing="false" onAction="#goToScreen2" text="Clientes" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" GridPane.columnIndex="0" GridPane.rowIndex="1">
+          <font>
+            <Font name="Arial" size="20.0" fx:id="x1" />
+          </font>
+        </Button>
+        <Button blendMode="BLUE" contentDisplay="CENTER" font="$x1" mnemonicParsing="false" onAction="#goToScreen3" text="Comtratos" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Button blendMode="RED" contentDisplay="CENTER" font="$x1" mnemonicParsing="false" onAction="#goToScreen4" text="Agenda" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+        <TilePane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
+          <children>
+            <Label contentDisplay="CENTER" prefHeight="90.0" prefWidth="185.0" text="Menu Principal">
+              <font>
+                <Font name="Arial Bold" size="20.0" />
+              </font>
+            </Label>
+          </children>
+        </TilePane>
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.0" minWidth="10.0" prefWidth="161.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.0" minWidth="10.0" prefWidth="161.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.0" minWidth="10.0" prefWidth="161.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+  </children>
+</AnchorPane>

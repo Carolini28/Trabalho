@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="trabalho.FXMLPedidoController">
+  <children>
+    <Button layoutX="228.0" layoutY="212.0" mnemonicParsing="false" onAction="#goToScreenP" text="Menu" textFill="#0083cc">
+      <font>
+        <Font size="20.0" />
+      </font>
+    </Button>
+    <TextField editable="false" layoutX="171.0" layoutY="56.0" prefWidth="200.0" text="Tela Pedido" />
+  </children>
+  <stylesheets>
+    <URL value="@fxmlpedido.css" />
+  </stylesheets>
+</AnchorPane>

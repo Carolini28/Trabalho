@@ -15,6 +15,7 @@ class Cliente {
     private Integer id;
     private String nome;
     private String fone;
+    private String email;
 
     public Integer getId() {
         return id;
@@ -38,6 +39,14 @@ class Cliente {
 
     public void setFone(String fone) {
         this.fone = fone;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     
 }

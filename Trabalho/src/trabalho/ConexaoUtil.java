@@ -18,11 +18,12 @@ import java.util.logging.Logger;
  */
 class ConexaoUtil {
      public static Connection getConnection() {
-        String url = "jdbc:postgresql://localhost:5432/clientesdb";
+        String url = "jdbc:postgresql://localhost:5432/RADI";
         String usuario = "postgres";
-        String senha = "postgres";
+        String senha = "carolini";
         try {
             Connection connection = DriverManager.getConnection(url,usuario, senha);
+            System.out.println("Conectou");
             return  connection;
         } catch (SQLException ex) {
             Logger.getLogger(ConexaoUtil.class.getName()).log(Level.SEVERE, null, ex);

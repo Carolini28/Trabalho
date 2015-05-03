@@ -20,13 +20,18 @@ class ClienteService {
     }
 
     public void salvar(Cliente cliente) throws ServiceException {
-
+        System.out.println("EmailS: "+ cliente.getEmail());
+        System.out.println("Salvar2");
         if (cliente.getNome().isEmpty()) {
             throw new ServiceException("Campo nome é obrigatório!");
         }
 
         if (cliente.getFone().isEmpty()) {
             throw new ServiceException("Campo fone é obrigatório!");
+        }
+        
+        if (cliente.getEmail().isEmpty()) {
+            throw new ServiceException("Campo email é obrigatório!");
         }
 
        clienteDAO.salvar(cliente);

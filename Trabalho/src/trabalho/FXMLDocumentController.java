@@ -17,8 +17,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 
 public class FXMLDocumentController implements Initializable {
@@ -31,6 +33,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private TextField tfid;
+    
+    @FXML
+    private TextField tfemail;
 
     @FXML
     private Label lbmsg;
@@ -43,13 +48,12 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void aoClicarBtnSalvar(ActionEvent event) {
-
+        System.out.println("Salvar1");
         Cliente cliente = new Cliente();
-        if (tfid.getText() != null) {
-            cliente.setId(Integer.parseInt(tfid.getText()));
-        }
+       
         cliente.setNome(tfnome.getText());
         cliente.setFone(tffone.getText());
+        cliente.setEmail(tfemail.getText());
 
         try {
             cliService.salvar(cliente);
@@ -82,6 +86,7 @@ public class FXMLDocumentController implements Initializable {
         if(clienteBuscado!=null){
             tfnome.setText(clienteBuscado.getNome());
             tffone.setText(clienteBuscado.getFone());
+            tfemail.setText(clienteBuscado.getEmail());
         }else{
             lbmsg.setText("Cliente nao encontrado!");
         }
@@ -93,6 +98,34 @@ public class FXMLDocumentController implements Initializable {
         List<Cliente> listaCliente =  cliService.buscarTodos();
         //Inserindo a lista de um Observable
         final ObservableList<Cliente> dados = FXCollections.observableArrayList(listaCliente);
+        
+        tvClientes.setEditable(true);
+        
+        TableColumn idCliente = new TableColumn("ID");
+        idCliente.setMinWidth(100);
+        idCliente.setCellValueFactory(
+                new PropertyValueFactory<Cliente, Integer>("idcliente"));
+        
+        
+        TableColumn nome = new TableColumn("Nome");
+        nome.setMinWidth(100);
+        nome.setCellValueFactory(
+                new PropertyValueFactory<Cliente, String>("nome"));
+ 
+        TableColumn telefone = new TableColumn("Fone");
+        telefone.setMinWidth(100);
+        telefone.setCellValueFactory(
+                new PropertyValueFactory<Cliente, String>("fone"));
+ 
+        TableColumn emailCol = new TableColumn("Email");
+        emailCol.setMinWidth(200);
+        emailCol.setCellValueFactory(
+                new PropertyValueFactory<Cliente, String>("email"));
+        
+        
+        tvClientes.getColumns().addAll(idCliente, nome, telefone, emailCol);
+        tvClientes.setItems(dados);
+        System.out.println(listaCliente);
         
        
     }

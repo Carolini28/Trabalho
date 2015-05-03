@@ -28,7 +28,7 @@ class ClienteDAO {
     }
 
     public Cliente buscarPorId(Integer id) {
-        String sql = "select * from cliente where id=?";
+        String sql = "select * from cliente where idcliente=?";
         try {
             PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
             preparadorSQL.setInt(1, id);
@@ -42,6 +42,7 @@ class ClienteDAO {
                 cli.setId(id);
                 cli.setNome(resultado.getString("nome"));
                 cli.setFone(resultado.getString("fone"));
+                cli.setEmail(resultado.getString("email"));
                 preparadorSQL.close();
                 return cli;
             } else {
@@ -56,7 +57,7 @@ class ClienteDAO {
     }
 
     public List<Cliente> buscarTodos() {
-        String sql = "select * from cliente order by id";
+        String sql = "select * from cliente order by idcliente";
         try {
             PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
             //Armazenando Resultado da consulta
@@ -67,9 +68,10 @@ class ClienteDAO {
                 Cliente cli = new Cliente();
 
                 //Atribuindo dados do resultado no objeto cliente
-                cli.setId(resultado.getInt("id"));
+                cli.setId(resultado.getInt("idcliente"));
                 cli.setNome(resultado.getString("nome"));
                 cli.setFone(resultado.getString("fone"));
+                cli.setEmail(resultado.getString("email"));
                 //Adicionando cliente na lista
                 lista.add(cli);
             }
@@ -93,6 +95,7 @@ class ClienteDAO {
     }
 
     public void cadastrar(Cliente cliente) {
+        System.out.println("Salvar3");
         String sql = "insert  into cliente (nome,fone) values (?,?)";
         try {
             PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
@@ -104,15 +107,17 @@ class ClienteDAO {
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+
     }
 
     public void alterar(Cliente cliente) {
-        String sql = "update cliente set nome=? ,fone=? where id=?";
+        String sql = "update cliente set nome=? ,fone=?, email=? where idcliente=?";
         try {
             PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
             preparadorSQL.setString(1, cliente.getNome());
             preparadorSQL.setString(2, cliente.getFone());
-            preparadorSQL.setInt(3, cliente.getId());
+            preparadorSQL.setString(3, cliente.getEmail());
+            preparadorSQL.setInt(4, cliente.getId());
             preparadorSQL.execute();
             preparadorSQL.close();
         } catch (SQLException ex) {
@@ -122,7 +127,7 @@ class ClienteDAO {
     }
 
     public void excluir(Integer id) {
-        String sql = "delete from cliente where id=?";
+        String sql = "delete from cliente where idcliente=?";
 
         try {
             PreparedStatement preparadorSQL = conexao.prepareStatement(sql);

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import java.net.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?scenebuilder-background-color 0xffccfdff?>
 
-<GridPane alignment="CENTER" hgap="10.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="trabalho.FXMLDocumentControllerCliente">
+<GridPane alignment="CENTER" hgap="10.0" prefHeight="610.0000999999975" prefWidth="735.0" vgap="10.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="trabalho.FXMLDocumentControllerCliente">
   <Label text="ID:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
   <TextField fx:id="tfid" GridPane.columnIndex="2" GridPane.rowIndex="1" />
   <Label text="Nome:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -18,14 +20,18 @@
   <Button fx:id="btnSalvar" onAction="#aoClicarBtnSalvar" text="Salvar" GridPane.columnIndex="1" GridPane.rowIndex="5" />
   <Button fx:id="btnExcluir" alignment="CENTER_LEFT" disable="false" onAction="#aoClicarBtnExcluir" text="Excluir" GridPane.columnIndex="2" GridPane.rowIndex="5" />
   <Button fx:id="btnBuscar" onAction="#aoClicarBtnBuscarPorId" text="Buscar" GridPane.columnIndex="3" GridPane.rowIndex="5" />
-  <Button fx:id="btnBuscarTds" onAction="#aoClicarBtnBuscarTodos" text="Buscar Todos" GridPane.columnIndex="4" GridPane.rowIndex="5" />
   <Label fx:id="lbmsg" GridPane.columnSpan="3" GridPane.rowIndex="6" />
   <TableView fx:id="tvClientes" GridPane.columnIndex="0" GridPane.rowIndex="2" />
   <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="233.0" minWidth="10.0" prefWidth="196.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="104.0" minWidth="10.0" prefWidth="104.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="145.0" minWidth="10.0" prefWidth="92.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="88.0" minWidth="10.0" prefWidth="62.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="69.0" minWidth="10.0" prefWidth="69.0" />
+    <ColumnConstraints maxWidth="91.0" prefWidth="78.0" />
   </columnConstraints>
+  <Button fx:id="btnBuscarTds" onAction="#aoClicarBtnBuscarTodos" text="Buscar Todos" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+  <Button mnemonicParsing="false" onAction="#goToScreenP" text="Menu" GridPane.columnIndex="5" GridPane.rowIndex="5" />
   <rowConstraints>
     <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
@@ -35,5 +41,7 @@
     <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
   </rowConstraints>
-  <Button mnemonicParsing="false" onAction="#goToScreenP" text="Menu" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+  <stylesheets>
+    <URL value="@cliente.css" />
+  </stylesheets>
 </GridPane>

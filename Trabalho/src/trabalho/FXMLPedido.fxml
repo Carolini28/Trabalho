@@ -3,19 +3,104 @@
 <?import java.lang.*?>
 <?import java.net.*?>
 <?import java.util.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="trabalho.FXMLPedidoController">
+<AnchorPane id="AnchorPane" prefHeight="698.0" prefWidth="727.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="trabalho.FXMLPedidoController">
   <children>
-    <Button layoutX="228.0" layoutY="212.0" mnemonicParsing="false" onAction="#goToScreenP" text="Menu" textFill="#0083cc">
+    <SplitPane dividerPositions="0.697986577181208" focusTraversable="true" layoutX="60.0" layoutY="49.0" orientation="VERTICAL" prefHeight="598.0" prefWidth="612.0">
+      <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="386.0" prefWidth="624.0">
+          <children>
+            <Label layoutX="15.0" layoutY="28.0" text="Origem Pedido:">
+              <font>
+                <Font size="13.0" fx:id="x1" />
+              </font>
+            </Label>
+            <TextField layoutX="119.0" layoutY="26.0" prefWidth="166.0" />
+            <Label font="$x1" layoutX="14.0" layoutY="56.0" text="Data do Pedido:" />
+            <TextField layoutX="119.0" layoutY="54.0" prefWidth="166.0" />
+            <TextField layoutX="119.0" layoutY="84.0" prefWidth="166.0" />
+            <Label font="$x1" layoutX="14.0" layoutY="84.0" text="Cerimonial:" />
+            <Label font="$x1" layoutX="14.0" layoutY="113.0" text="Data do Evento:" />
+            <TextField layoutX="119.0" layoutY="111.0" prefWidth="166.0" />
+            <Label font="$x1" layoutX="14.0" layoutY="141.0" text="Hora do Evento:" />
+            <TextField layoutX="119.0" layoutY="137.0" prefWidth="166.0" />
+            <Label font="$x1" layoutX="14.0" layoutY="165.0" text="Indicação:" />
+            <TextField layoutX="119.0" layoutY="165.0" prefWidth="166.0" />
+            <Label font="$x1" layoutX="15.0" layoutY="193.0" text="Endereço:" />
+            <TextField layoutX="119.0" layoutY="200.0" prefWidth="230.0" />
+            <Label font="$x1" layoutX="15.0" layoutY="230.0" text="Observação:" />
+            <TextField layoutX="119.0" layoutY="228.0" prefWidth="230.0" />
+            <Label font="$x1" layoutX="15.0" layoutY="263.0" text="Local Evento:" />
+            <TextField layoutX="119.0" layoutY="259.0" prefWidth="230.0" />
+            <Label font="$x1" layoutX="14.0" layoutY="298.0" text="Tipo do Evento:" />
+            <ComboBox layoutX="119.0" layoutY="295.0" prefHeight="21.0" prefWidth="119.0">
+              <items>
+                <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Item 1" />
+                  <String fx:value="Item 2" />
+                  <String fx:value="Item 3" />
+                </FXCollections>
+              </items>
+            </ComboBox>
+            <Label font="$x1" layoutX="14.0" layoutY="328.0" text="Cliente:" />
+            <ComboBox layoutX="119.0" layoutY="329.0" prefHeight="21.0" prefWidth="178.0">
+              <items>
+                <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Item 1" />
+                  <String fx:value="Item 2" />
+                  <String fx:value="Item 3" />
+                </FXCollections>
+              </items>
+            </ComboBox>
+          </children>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="181.0" prefWidth="624.0">
+          <children>
+            <Label font="$x1" layoutX="14.0" layoutY="27.0" prefWidth="57.0" text="Produto:" />
+            <ComboBox layoutX="78.0" layoutY="28.0">
+              <items>
+                <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="Item 1" />
+                  <String fx:value="Item 2" />
+                  <String fx:value="Item 3" />
+                </FXCollections>
+              </items>
+            </ComboBox>
+            <Label font="$x1" layoutX="179.0" layoutY="28.0" text="Quantidade:" />
+            <TextField layoutX="262.0" layoutY="28.0" prefWidth="35.0" />
+            <Label layoutX="338.0" layoutY="31.0" text="Total:" />
+            <TextField layoutX="376.0" layoutY="28.0" prefWidth="71.0" />
+            <Button layoutX="457.0" layoutY="29.0" mnemonicParsing="false" text="Adicionar" />
+            <TableView layoutX="7.0" layoutY="61.0" prefHeight="100.0" prefWidth="316.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="Produto" />
+                <TableColumn prefWidth="75.0" text="Quantidade" />
+                <TableColumn prefWidth="75.0" text="Valor" />
+                <TableColumn prefWidth="75.0" text="" />
+              </columns>
+            </TableView>
+            <Label font="$x1" layoutX="374.0" layoutY="129.0" text="Total Pedido:" />
+            <TextField layoutX="457.0" layoutY="129.0" prefWidth="110.0" />
+          </children>
+        </AnchorPane>
+      </items>
+    </SplitPane>
+    <Label layoutX="310.0" layoutY="14.0" text="Pedido">
       <font>
         <Font size="20.0" />
       </font>
+    </Label>
+    <Button layoutX="655.0" layoutY="663.0" mnemonicParsing="false" onAction="#goToScreenP" text="Menu" textFill="#0083cc">
+      <font>
+        <Font size="15.0" />
+      </font>
     </Button>
-    <TextField editable="false" layoutX="171.0" layoutY="56.0" prefWidth="200.0" text="Tela Pedido" />
+    <Button font="$x1" layoutX="14.0" layoutY="667.0" mnemonicParsing="false" text="Salvar Pedido" />
   </children>
   <stylesheets>
     <URL value="@fxmlpedido.css" />

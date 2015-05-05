@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="630.0" prefWidth="652.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="trabalho.FXMLPrincipalController">
+<AnchorPane id="AnchorPane" prefHeight="701.0" prefWidth="734.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="trabalho.FXMLPrincipalController">
   <children>
-    <GridPane layoutX="61.0" layoutY="14.0" prefHeight="353.0" prefWidth="479.0">
+    <GridPane layoutX="138.0" layoutY="118.0" prefHeight="353.0" prefWidth="479.0">
       <children>
         <Button blendMode="GREEN" contentDisplay="CENTER" disable="false" mnemonicParsing="false" onAction="#goToScreen2" text="Clientes" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS" GridPane.columnIndex="0" GridPane.rowIndex="1">
           <font>

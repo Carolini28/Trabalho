@@ -31,7 +31,7 @@
             <TextField layoutX="119.0" layoutY="137.0" prefWidth="166.0" />
             <Label font="$x1" layoutX="14.0" layoutY="165.0" text="Indicação:" />
             <TextField layoutX="119.0" layoutY="165.0" prefWidth="166.0" />
-            <Label font="$x1" layoutX="15.0" layoutY="193.0" text="Endereço:" />
+            <Label font="$x1" layoutX="15.0" layoutY="202.0" text="Endereço:" />
             <TextField layoutX="119.0" layoutY="200.0" prefWidth="230.0" />
             <Label font="$x1" layoutX="15.0" layoutY="230.0" text="Observação:" />
             <TextField layoutX="119.0" layoutY="228.0" prefWidth="230.0" />
@@ -73,15 +73,13 @@
             </ComboBox>
             <Label font="$x1" layoutX="179.0" layoutY="28.0" text="Quantidade:" />
             <TextField layoutX="262.0" layoutY="28.0" prefWidth="35.0" />
-            <Label layoutX="338.0" layoutY="31.0" text="Total:" />
-            <TextField layoutX="376.0" layoutY="28.0" prefWidth="71.0" />
             <Button layoutX="457.0" layoutY="29.0" mnemonicParsing="false" text="Adicionar" />
             <TableView layoutX="7.0" layoutY="61.0" prefHeight="100.0" prefWidth="316.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="Produto" />
                 <TableColumn prefWidth="75.0" text="Quantidade" />
                 <TableColumn prefWidth="75.0" text="Valor" />
-                <TableColumn prefWidth="75.0" text="" />
+                <TableColumn prefWidth="75.0" text="Status" />
               </columns>
             </TableView>
             <Label font="$x1" layoutX="374.0" layoutY="129.0" text="Total Pedido:" />

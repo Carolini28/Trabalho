@@ -93,11 +93,65 @@ public class PedidoDAO {
             }
         } catch (SQLException ex) {
 
-            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
         }
 
     }
+    
+    public double buscarPorIdProduto(Integer id){
+    
+         String sql = "select * from produto where idproduto=?";
+         
+         try {
+            PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
+            //Armazenando Resultado da consulta
+            ResultSet resultado = preparadorSQL.executeQuery();
+            if (resultado.next()) {
+                
+                double IdP;
+
+                //Atribuindo dados do resultado no objeto pedido
+               
+                IdP = resultado.getDouble("valor");
+                preparadorSQL.close();
+                return IdP;
+            } else {
+                return 0;
+            }
+        } catch (SQLException ex) {
+
+            Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+
+    }
+    
+    public double buscarValorTotal (Integer id){
+        
+        String sql = "select * from itempedido where idpedido=?";
+        double IdValor = 0;
+         try {
+            PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
+            //Armazenando Resultado da consulta
+            ResultSet resultado = preparadorSQL.executeQuery();
+            while (resultado.next()) {
+                
+                IdValor = IdValor  + resultado.getDouble("valor");
+                
+            } 
+             preparadorSQL.close();
+             return IdValor;
+        } catch (SQLException ex) {
+            Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+        
+        
+    
+    }
+    
+    //Fazer aparecer na tabela tds os itens do pedido 
 
 
     

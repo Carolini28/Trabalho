@@ -18,6 +18,8 @@ import javafx.fxml.Initializable;
 public class FXMLPedidoController implements Initializable,  ControlledScreen {
 
     ScreensController myController;
+    
+    PedidoService pedidoService = new PedidoService();
     /**
      * Initializes the controller class.
      */

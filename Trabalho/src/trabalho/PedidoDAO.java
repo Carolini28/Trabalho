@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
@@ -105,6 +107,7 @@ public class PedidoDAO {
          
          try {
             PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
+            preparadorSQL.setInt(1, id);
             //Armazenando Resultado da consulta
             ResultSet resultado = preparadorSQL.executeQuery();
             if (resultado.next()) {
@@ -133,6 +136,7 @@ public class PedidoDAO {
         double IdValor = 0;
          try {
             PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
+            preparadorSQL.setInt(1, id);
             //Armazenando Resultado da consulta
             ResultSet resultado = preparadorSQL.executeQuery();
             while (resultado.next()) {
@@ -152,6 +156,36 @@ public class PedidoDAO {
     }
     
     //Fazer aparecer na tabela tds os itens do pedido 
+    
+    public List<ItemPedido> buscarItemPedido(Integer id){
+        
+        String sql = "SELECT * FROM itempedido, produto WHERE itempedido.idproduto = produto.idproduto AND idpedido = ?";
+        
+        try {
+            PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
+            preparadorSQL.setInt(1, id);
+            //Armazenando Resultado da consulta
+            ResultSet resultado = preparadorSQL.executeQuery();
+            List<ItemPedido> lista = new ArrayList<>();
+            while (resultado.next()) {
+                
+                ItemPedido item = new ItemPedido();
+
+                item.setDescricao(resultado.getString("descricao"));
+                item.setQuantidade(resultado.getInt("quantidade"));
+                item.setValor(resultado.getDouble("valor"));
+                
+                lista.add(item);
+            }
+            preparadorSQL.close();
+            return lista;
+        } catch (SQLException ex) {
+            Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+    
+    }
 
 
     

@@ -15,6 +15,16 @@ public class ItemPedido {
      private Double  valor;
      private Integer idpedido;
      private Integer idproduto;
+     private String descricao;
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+   
 
     public Integer getIditempedido() {
         return iditempedido;

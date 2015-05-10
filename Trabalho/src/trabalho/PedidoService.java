@@ -4,6 +4,8 @@
  */
 package trabalho;
 
+import java.util.List;
+
 /**
  *
  * @author Carolini
@@ -102,6 +104,12 @@ public class PedidoService {
         return pedidoDAO.buscarValorTotal(idPedido);
     
     }
+    
+    public List<ItemPedido> buscarItensPedido() {
+            idPedido =  pedidoDAO.buscarPorIdPedido();
+            return pedidoDAO.buscarItemPedido(idPedido);
+    }
+    
     
     
     

@@ -8,7 +8,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -49,24 +54,35 @@ public class PedidoDAO {
     }
     
     @FXML
-    public void salvarPedido (Pedido pedido) {
+    public void salvarPedido (Pedido pedido) throws ParseException {
         
         String sql = "INSERT  INTO pedido (origempedido,datapedido,cerimonial, dataevento,"
                 + " horaevento, indicacao, endereco, observacao, localevento, idcliente, idtipoevento)"
                 + " VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         try {
+            
+            
+            
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+            Date date1 = formatter.parse(pedido.getDatapedido());
+            Date date2 = formatter.parse(pedido.getDataevento());
+            
+            java.sql.Date d1 = new java.sql.Date (date1.getTime());  
+            java.sql.Date d2 = new java.sql.Date (date2.getTime());  
+            
+            
             PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
             preparadorSQL.setString(1, pedido.getOrigempedido());
-            preparadorSQL.setString(2, pedido.getDatapedido());
+            preparadorSQL.setDate(2, d1);
             preparadorSQL.setString(3, pedido.getCerimonial());
-            preparadorSQL.setString(4, pedido.getDataevento());
+            preparadorSQL.setDate(4, d2);
             preparadorSQL.setString(5, pedido.getHoraevento());
             preparadorSQL.setString(6, pedido.getIndicacao());
             preparadorSQL.setString(7, pedido.getEndereco());
             preparadorSQL.setString(8, pedido.getObservacao());
             preparadorSQL.setString(9, pedido.getLocalevento());
-            preparadorSQL.setInt(10, pedido.getIdcliente());
-            preparadorSQL.setInt(11, pedido.getIdtipoevento());
+            preparadorSQL.setInt(10, pedido.getIdCliente());
+            preparadorSQL.setInt(11, pedido.getIdEvento());
             preparadorSQL.execute();
             preparadorSQL.close();
         } catch (SQLException ex) {
@@ -89,7 +105,7 @@ public class PedidoDAO {
                
                 IdP = resultado.getInt("idpedido");
                 preparadorSQL.close();
-                return IdP + 1;
+                return IdP;
             } else {
                 return 0;
             }
@@ -113,8 +129,6 @@ public class PedidoDAO {
             if (resultado.next()) {
                 
                 double IdP;
-
-                //Atribuindo dados do resultado no objeto pedido
                
                 IdP = resultado.getDouble("valor");
                 preparadorSQL.close();
@@ -174,6 +188,7 @@ public class PedidoDAO {
                 item.setDescricao(resultado.getString("descricao"));
                 item.setQuantidade(resultado.getInt("quantidade"));
                 item.setValor(resultado.getDouble("valor"));
+                item.setStatus("OK");
                 
                 lista.add(item);
             }
@@ -185,6 +200,80 @@ public class PedidoDAO {
         }
 
     
+    }
+
+    public int buscarCliente(String nome) {
+       String sql = "SELECT * FROM cliente WHERE nome = ?";
+
+       try {
+            PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
+            preparadorSQL.setString(1, nome);
+            //Armazenando Resultado da consulta
+            ResultSet resultado = preparadorSQL.executeQuery();
+            if (resultado.next()) {
+                
+                int IdC;
+               
+                IdC = resultado.getInt("idcliente");
+                preparadorSQL.close();
+                return IdC;
+            } else {
+                return 0;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+
+    }
+
+    public int buscarEvento(String evento) {
+        String sql = "SELECT * FROM tipoevento WHERE descricao = ?";
+        try {
+            PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
+            preparadorSQL.setString(1, evento);
+            //Armazenando Resultado da consulta
+            ResultSet resultado = preparadorSQL.executeQuery();
+            if (resultado.next()) {
+                
+                int IdE;
+               
+                IdE = resultado.getInt("idtipoevento");
+                preparadorSQL.close();
+                return IdE;
+            } else {
+                return 0;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+        
+    }
+
+    public int buscarProduto(String produto) {
+        
+        String sql = "SELECT * FROM produto WHERE descricao = ?";
+
+       try {
+            PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
+            preparadorSQL.setString(1, produto);
+            //Armazenando Resultado da consulta
+            ResultSet resultado = preparadorSQL.executeQuery();
+            if (resultado.next()) {
+                
+                int IdP;
+               
+                IdP = resultado.getInt("idproduto");
+                preparadorSQL.close();
+                return IdP;
+            } else {
+                return 0;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
     }
 
 

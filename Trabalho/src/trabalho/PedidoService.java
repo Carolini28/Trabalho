@@ -58,11 +58,11 @@ public class PedidoService {
             throw new ServiceException("Campo Local Evento é obrigatório!");
         }
         
-        if(pedido.getIdtipoevento() == 0){
+        if(pedido.getEvento().isEmpty()){
             throw new ServiceException("Selecionar Tipo do Evento!");
         } 
         
-        if(pedido.getIdcliente() == 0){
+        if(pedido.getCliente().isEmpty()){
             throw new ServiceException("Selecionar Cliente!");
         }
         
@@ -74,23 +74,29 @@ public class PedidoService {
     public void salvarItem (ItemPedido item) throws ServiceException{
         
        idPedido =  pedidoDAO.buscarPorIdPedido();
+        
+       
        double valorTotalItem;
        double valorProduto;
        
-       if(item.getIdproduto() == 0){
-            throw new ServiceException("Campo Local Evento é obrigatório!");
+       if(item.getDescricao().isEmpty()){
+            throw new ServiceException("Selecionar Produto!");
        }
        
        if(item.getQuantidade() == 0){
            throw new ServiceException("Campo Quantidade é obrigatório!");
        }
        
+       System.out.println("Idpedido: "+ idPedido);
+       
        
        valorProduto =  pedidoDAO.buscarPorIdProduto(item.getIdproduto());
-       
+       System.out.println("valorProduto: "+ valorProduto);
        valorTotalItem =  (valorProduto * item.getQuantidade());
+       System.out.println("valorTotalItem: "+ valorTotalItem);
        
-       item.setIditempedido(idPedido);
+       
+       item.setIdpedido(idPedido);
        item.setValor(valorTotalItem);
        
        pedidoDAO.salvarItemPedido(item);
@@ -108,6 +114,21 @@ public class PedidoService {
     public List<ItemPedido> buscarItensPedido() {
             idPedido =  pedidoDAO.buscarPorIdPedido();
             return pedidoDAO.buscarItemPedido(idPedido);
+    }
+    
+    public int buscaIdcliente(String nome){
+        return pedidoDAO.buscarCliente(nome);
+    
+    }
+    
+    public int buscaIdEvento(String evento){
+        return pedidoDAO.buscarEvento(evento);
+    
+    
+    }
+    
+    public int buscaIdProduto(String produto){
+        return pedidoDAO.buscarProduto(produto);
     }
     
     

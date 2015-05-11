@@ -16,6 +16,15 @@ public class ItemPedido {
      private Integer idpedido;
      private Integer idproduto;
      private String descricao;
+     private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getDescricao() {
         return descricao;

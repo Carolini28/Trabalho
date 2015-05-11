@@ -5,11 +5,21 @@
 package trabalho;
 
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
@@ -64,6 +74,12 @@ public class FXMLPedidoController implements Initializable,  ControlledScreen {
      @FXML
      private TableView<ItemPedido> tvItemPedido;
      
+     @FXML
+     private TextField TotalPedido;
+     
+     @FXML
+     private Label lbmsg;
+     
     
     PedidoService pedidoService = new PedidoService();
     /**
@@ -85,9 +101,78 @@ public class FXMLPedidoController implements Initializable,  ControlledScreen {
     }
     
     @FXML
-    public void aoClicarBtnSalvarPedido (ActionEvent event) {
+    public void aoClicarBtnSalvarPedido (ActionEvent event) throws ServiceException, ParseException {
+        
+        Pedido pedido = new Pedido();
+        int Idevento, Idcliente;
+        
+        pedido.setOrigempedido(origemPedido.getText());
+        pedido.setDatapedido(dataPedido.getText());
+        pedido.setCerimonial(cerimonial.getText());
+        pedido.setDataevento(dataEvento.getText());
+        pedido.setHoraevento(HoraEvento.getText());
+        pedido.setIndicacao(indicacao.getText());
+        pedido.setEndereco(endereco.getText());
+        pedido.setObservacao(observacao.getText());
+        pedido.setLocalevento(LocalEvento.getText());
+        pedido.setCliente(cliente.getValue().toString());
+        pedido.setEvento(evento.getValue().toString());
+        
+        Idevento = pedidoService.buscaIdEvento(evento.toString());
+        Idcliente = pedidoService.buscaIdcliente(cliente.toString());
+        
+        pedido.setIdCliente(Idcliente);
+        pedido.setIdEvento(Idevento);
+        
+        
+        try {
+            pedidoService.salvarPedido(pedido);
+            //Mensagem
+            
+            System.out.println("Salvo com Sucesso!");
+        } catch (ServiceException ex) {
+            
+            Logger.getLogger(FXMLPedidoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     
+    }
     
+    @FXML
+    public void aoClicarBtnAdicionar (ActionEvent event) throws ServiceException{
     
+        ItemPedido item = new  ItemPedido();
+        int IdProduto;
+        
+        IdProduto = pedidoService.buscaIdProduto(produto.getValue().toString());
+        
+        System.out.println("Idproduto: " + IdProduto);
+        System.out.println("produto: " + produto.getValue().toString());
+        System.out.println("Quantidade: " + quantidade.getText());
+
+        item.setIdproduto(IdProduto);
+        item.setDescricao(produto.toString().toString());
+        item.setQuantidade(Integer.parseInt(quantidade.getText()));
+        
+        try{
+            pedidoService.salvarItem(item);
+
+            //Aparecer valor total
+            TotalPedido.setText(String.valueOf(pedidoService.ValorTotal()));
+          
+            //Aparecer itens na tabela
+            List<ItemPedido> listaItens =  pedidoService.buscarItensPedido();
+            //Inserindo a lista de um Observable
+            final ObservableList<ItemPedido> dados = FXCollections.observableArrayList(listaItens);
+        
+            tvItemPedido.setEditable(true);
+            
+            tvItemPedido.setItems(dados);
+            
+            
+            System.out.println("Salvo com Sucesso!");
+        } catch (ServiceException ex){
+           
+            Logger.getLogger(FXMLPedidoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

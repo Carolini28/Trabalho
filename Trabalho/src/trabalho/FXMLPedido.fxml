@@ -25,7 +25,7 @@
             <TextField fx:id="dataPedido" layoutX="119.0" layoutY="54.0" prefWidth="166.0" />
             <TextField fx:id="cerimonial" layoutX="119.0" layoutY="84.0" prefWidth="166.0" />
             <Label font="$x1" layoutX="14.0" layoutY="84.0" text="Cerimonial:" />
-            <Label font="$x1" layoutX="14.0" layoutY="113.0" text="Data do Evento:" />
+            <Label font="$x1" layoutX="14.0" layoutY="113.0" text="Data do Evento:" /> 
             <TextField fx:id="dataEvento" layoutX="119.0" layoutY="111.0" prefWidth="166.0" />
             <Label font="$x1" layoutX="14.0" layoutY="141.0" text="Hora do Evento:" />
             <TextField fx:id="HoraEvento" layoutX="119.0" layoutY="137.0" prefWidth="166.0" />
@@ -41,9 +41,9 @@
             <ComboBox fx:id="evento" layoutX="119.0" layoutY="295.0" prefHeight="21.0" prefWidth="119.0">
               <items>
                 <FXCollections fx:factory="observableArrayList">
-                  <String fx:value="Item 1" />
-                  <String fx:value="Item 2" />
-                  <String fx:value="Item 3" />
+                  <String fx:value="casamento" />
+                  <String fx:value="reunião" />
+                  <String fx:value="aniversário" />
                 </FXCollections>
               </items>
             </ComboBox>
@@ -51,9 +51,9 @@
             <ComboBox fx:id="cliente" layoutX="119.0" layoutY="329.0" prefHeight="21.0" prefWidth="178.0">
               <items>
                 <FXCollections fx:factory="observableArrayList">
-                  <String fx:value="Item 1" />
-                  <String fx:value="Item 2" />
-                  <String fx:value="Item 3" />
+                  <String fx:value="carolini" />
+                  <String fx:value="lucas" />
+                  <String fx:value="joao" />
                 </FXCollections>
               </items>
             </ComboBox>
@@ -65,15 +65,15 @@
             <ComboBox fx:id="produto" layoutX="78.0" layoutY="28.0">
               <items>
                 <FXCollections fx:factory="observableArrayList">
-                  <String fx:value="Item 1" />
-                  <String fx:value="Item 2" />
-                  <String fx:value="Item 3" />
+                  <String fx:value="brigadeiro" />
+                  <String fx:value="bem casado" />
+                  <String fx:value="Cupcakes" />
                 </FXCollections>
               </items>
             </ComboBox>
             <Label font="$x1" layoutX="179.0" layoutY="28.0" text="Quantidade:" />
             <TextField fx:id="quantidade" layoutX="262.0" layoutY="28.0" prefWidth="35.0" />
-            <Button layoutX="457.0" layoutY="29.0" mnemonicParsing="false" text="Adicionar" />
+            <Button layoutX="457.0" layoutY="29.0" mnemonicParsing="false" onAction="#aoClicarBtnAdicionar" text="Adicionar" />
             <TableView fx:id="tvItemPedido" layoutX="7.0" layoutY="61.0" prefHeight="100.0" prefWidth="316.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="Produto" />
@@ -83,7 +83,7 @@
               </columns>
             </TableView>
             <Label font="$x1" layoutX="374.0" layoutY="129.0" text="Total Pedido:" />
-            <TextField layoutX="457.0" layoutY="129.0" prefWidth="110.0" />
+            <TextField fx:id="TotalPedido" layoutX="457.0" layoutY="129.0" prefWidth="110.0" />
           </children>
         </AnchorPane>
       </items>
@@ -98,7 +98,7 @@
         <Font size="15.0" />
       </font>
     </Button>
-    <Button font="$x1" layoutX="14.0" layoutY="667.0" mnemonicParsing="false" text="Salvar Pedido" />
+    <Button font="$x1" layoutX="14.0" layoutY="667.0" mnemonicParsing="false" onAction="#aoClicarBtnSalvarPedido" text="Salvar Pedido" />
   </children>
   <stylesheets>
     <URL value="@fxmlpedido.css" />

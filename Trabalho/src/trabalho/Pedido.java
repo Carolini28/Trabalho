@@ -21,8 +21,42 @@ public class Pedido {
     private String endereco;
     private String observacao;
     private String localevento;
-    private Integer idcliente;
-    private Integer idtipoevento;
+    private String cliente;
+    private String evento;
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+
+    public String getEvento() {
+        return evento;
+    }
+
+    public void setEvento(String evento) {
+        this.evento = evento;
+    }
+
+    public Integer getIdCliente() {
+        return IdCliente;
+    }
+
+    public void setIdCliente(Integer IdCliente) {
+        this.IdCliente = IdCliente;
+    }
+
+    public Integer getIdEvento() {
+        return IdEvento;
+    }
+
+    public void setIdEvento(Integer IdEvento) {
+        this.IdEvento = IdEvento;
+    }
+    private Integer IdCliente;
+    private Integer IdEvento;
 
     public Integer getIdpedido() {
         return idpedido;
@@ -104,21 +138,7 @@ public class Pedido {
         this.localevento = localevento;
     }
 
-    public Integer getIdcliente() {
-        return idcliente;
-    }
-
-    public void setIdcliente(Integer idcliente) {
-        this.idcliente = idcliente;
-    }
-
-    public Integer getIdtipoevento() {
-        return idtipoevento;
-    }
-
-    public void setIdtipoevento(Integer idtipoevento) {
-        this.idtipoevento = idtipoevento;
-    }
+  
 
     
 }

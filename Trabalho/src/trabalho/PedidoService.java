@@ -4,6 +4,7 @@
  */
 package trabalho;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public class PedidoService {
         pedidoDAO = new PedidoDAO();
     }
     
-    public void salvarPedido (Pedido pedido) throws ServiceException{
+    public void salvarPedido (Pedido pedido) throws ServiceException, ParseException{
  
         if(pedido.getOrigempedido().isEmpty()) {
             throw new ServiceException("Campo Origem Pedido é obrigatório!");

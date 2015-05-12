@@ -11,7 +11,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="698.0" prefWidth="727.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="trabalho.FXMLPedidoController">
   <children>
-    <SplitPane dividerPositions="0.697986577181208" focusTraversable="true" layoutX="60.0" layoutY="49.0" orientation="VERTICAL" prefHeight="598.0" prefWidth="612.0">
+    <SplitPane dividerPositions="0.697986577181208" focusTraversable="true" layoutX="58.0" layoutY="46.0" orientation="VERTICAL" prefHeight="598.0" prefWidth="612.0">
       <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="386.0" prefWidth="624.0">
           <children>
@@ -22,10 +22,14 @@
             </Label>
             <TextField fx:id="origemPedido" layoutX="119.0" layoutY="26.0" prefWidth="166.0" />
             <Label font="$x1" layoutX="14.0" layoutY="56.0" text="Data do Pedido:" />
-            <TextField fx:id="dataPedido" layoutX="119.0" layoutY="54.0" prefWidth="166.0" />
+            <AnchorPane id="AnchorPane" layoutX="119.0" layoutY="54.0">
+              <children>
+                <TextField fx:id="dataPedido" layoutX="0.0" layoutY="0.0" prefWidth="166.0" />
+              </children>
+            </AnchorPane>
             <TextField fx:id="cerimonial" layoutX="119.0" layoutY="84.0" prefWidth="166.0" />
             <Label font="$x1" layoutX="14.0" layoutY="84.0" text="Cerimonial:" />
-            <Label font="$x1" layoutX="14.0" layoutY="113.0" text="Data do Evento:" /> 
+            <Label font="$x1" layoutX="14.0" layoutY="113.0" text="Data do Evento:" />
             <TextField fx:id="dataEvento" layoutX="119.0" layoutY="111.0" prefWidth="166.0" />
             <Label font="$x1" layoutX="14.0" layoutY="141.0" text="Hora do Evento:" />
             <TextField fx:id="HoraEvento" layoutX="119.0" layoutY="137.0" prefWidth="166.0" />
@@ -57,6 +61,7 @@
                 </FXCollections>
               </items>
             </ComboBox>
+            <Button font="$x1" layoutX="446.0" layoutY="366.0" mnemonicParsing="false" onAction="#aoClicarBtnSalvarPedido" text="Salvar Pedido" />
           </children>
         </AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="181.0" prefWidth="624.0">
@@ -73,32 +78,30 @@
             </ComboBox>
             <Label font="$x1" layoutX="179.0" layoutY="28.0" text="Quantidade:" />
             <TextField fx:id="quantidade" layoutX="262.0" layoutY="28.0" prefWidth="35.0" />
-            <Button layoutX="457.0" layoutY="29.0" mnemonicParsing="false" onAction="#aoClicarBtnAdicionar" text="Adicionar" />
-            <TableView fx:id="tvItemPedido" layoutX="7.0" layoutY="61.0" prefHeight="100.0" prefWidth="316.0">
-              <columns>
-                <TableColumn prefWidth="75.0" text="Produto" />
-                <TableColumn prefWidth="75.0" text="Quantidade" />
-                <TableColumn prefWidth="75.0" text="Valor" />
-                <TableColumn prefWidth="75.0" text="Status" />
-              </columns>
-            </TableView>
+            <Button layoutX="457.0" layoutY="29.0" mnemonicParsing="false" onAction="#aoClicarBtnAdicionar" text="Adicionar ao Pedido" />
             <Label font="$x1" layoutX="374.0" layoutY="129.0" text="Total Pedido:" />
             <TextField fx:id="TotalPedido" layoutX="457.0" layoutY="129.0" prefWidth="110.0" />
+            <HBox layoutX="13.0" layoutY="51.0" prefHeight="113.0" prefWidth="361.0">
+              <children>
+                <TableView fx:id="tvItemPedido" prefHeight="113.0" prefWidth="361.0">
+                </TableView>
+              </children>
+            </HBox>
           </children>
         </AnchorPane>
       </items>
     </SplitPane>
-    <Label layoutX="310.0" layoutY="14.0" text="Pedido">
+    <Label layoutX="346.0" layoutY="14.0" text="Pedido">
       <font>
         <Font size="20.0" />
       </font>
     </Label>
-    <Button layoutX="655.0" layoutY="663.0" mnemonicParsing="false" onAction="#goToScreenP" text="Menu" textFill="#0083cc">
+    <Button layoutX="626.0" layoutY="657.0" mnemonicParsing="false" onAction="#goToScreenP" text="Menu" textFill="#0083cc">
       <font>
         <Font size="15.0" />
       </font>
     </Button>
-    <Button font="$x1" layoutX="14.0" layoutY="667.0" mnemonicParsing="false" onAction="#aoClicarBtnSalvarPedido" text="Salvar Pedido" />
+    <Label fx:id="lbmsg" layoutX="67.0" layoutY="663.0" text="" />
   </children>
   <stylesheets>
     <URL value="@fxmlpedido.css" />

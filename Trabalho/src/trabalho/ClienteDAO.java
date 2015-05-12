@@ -62,7 +62,7 @@ class ClienteDAO {
             PreparedStatement preparadorSQL = conexao.prepareStatement(sql);
             //Armazenando Resultado da consulta
             ResultSet resultado = preparadorSQL.executeQuery();
-            List<Cliente> lista = new ArrayList<>();
+            List<Cliente> lista = new ArrayList<Cliente>();
             while (resultado.next()) {
                 //Instancia de cliente
                 Cliente cli = new Cliente();

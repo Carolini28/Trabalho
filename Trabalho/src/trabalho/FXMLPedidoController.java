@@ -20,8 +20,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
  * FXML Controller class
@@ -124,11 +126,37 @@ public class FXMLPedidoController implements Initializable,  ControlledScreen {
         pedido.setIdCliente(Idcliente);
         pedido.setIdEvento(Idevento);
         
+        tvItemPedido.setEditable(true);
+            
+            TableColumn descricao = new TableColumn("Descricao");
+            descricao.setMinWidth(100);
+            descricao.setCellValueFactory(
+                    new PropertyValueFactory<ItemPedido, String>("descricao"));
+
+            TableColumn quantidade = new TableColumn("Quantidade");
+            quantidade.setMinWidth(100);
+            quantidade.setCellValueFactory(
+                    new PropertyValueFactory<Cliente, String>("quantidade"));
+
+            TableColumn valor = new TableColumn("Valor");
+            valor.setMinWidth(200);
+            valor.setCellValueFactory(
+                    new PropertyValueFactory<Cliente, String>("valor"));
+            
+            TableColumn status = new TableColumn("Status");
+            status.setMinWidth(100);
+            status.setCellValueFactory(
+                    new PropertyValueFactory<ItemPedido, String>("status"));
+        
+        
+            tvItemPedido.getColumns().addAll(descricao, quantidade, valor, status);
+            
+        
         
         try {
             pedidoService.salvarPedido(pedido);
             //Mensagem
-            
+            lbmsg.setText("Pedido Salvo com Sucesso!");
             System.out.println("Salvo com Sucesso!");
         } catch (ServiceException ex) {
             
@@ -164,12 +192,12 @@ public class FXMLPedidoController implements Initializable,  ControlledScreen {
             //Inserindo a lista de um Observable
             final ObservableList<ItemPedido> dados = FXCollections.observableArrayList(listaItens);
         
-            tvItemPedido.setEditable(true);
             
             tvItemPedido.setItems(dados);
             
             
-            System.out.println("Salvo com Sucesso!");
+            System.out.println("Item Salvo com Sucesso!");
+            lbmsg.setText("Item Salvo com Sucesso!");
         } catch (ServiceException ex){
            
             Logger.getLogger(FXMLPedidoController.class.getName()).log(Level.SEVERE, null, ex);

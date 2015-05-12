@@ -108,9 +108,9 @@ public class FXMLDocumentControllerCliente implements Initializable, ControlledS
         
         tvClientes.setEditable(true);
         
-        TableColumn idCliente = new TableColumn("ID");
-        idCliente.setMinWidth(100);
-        idCliente.setCellValueFactory(
+        TableColumn idcliente = new TableColumn("ID");
+        idcliente.setMinWidth(100);
+        idcliente.setCellValueFactory(
                 new PropertyValueFactory<Cliente, Integer>("idcliente"));
         
         
@@ -119,18 +119,18 @@ public class FXMLDocumentControllerCliente implements Initializable, ControlledS
         nome.setCellValueFactory(
                 new PropertyValueFactory<Cliente, String>("nome"));
  
-        TableColumn telefone = new TableColumn("Fone");
-        telefone.setMinWidth(100);
-        telefone.setCellValueFactory(
+        TableColumn fone = new TableColumn("Fone");
+        fone.setMinWidth(100);
+        fone.setCellValueFactory(
                 new PropertyValueFactory<Cliente, String>("fone"));
  
-        TableColumn emailCol = new TableColumn("Email");
-        emailCol.setMinWidth(200);
-        emailCol.setCellValueFactory(
+        TableColumn email = new TableColumn("Email");
+        email.setMinWidth(200);
+        email.setCellValueFactory(
                 new PropertyValueFactory<Cliente, String>("email"));
         
         
-        tvClientes.getColumns().addAll(idCliente, nome, telefone, emailCol);
+        tvClientes.getColumns().addAll(idcliente, nome, fone, email);
         tvClientes.setItems(dados);
    
        

@@ -180,7 +180,7 @@ public class PedidoDAO {
             preparadorSQL.setInt(1, id);
             //Armazenando Resultado da consulta
             ResultSet resultado = preparadorSQL.executeQuery();
-            List<ItemPedido> lista = new ArrayList<>();
+            List<ItemPedido> lista = new ArrayList<ItemPedido>();
             while (resultado.next()) {
                 
                 ItemPedido item = new ItemPedido();

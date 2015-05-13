@@ -101,36 +101,35 @@ public class FXMLDocumentControllerCliente implements Initializable, ControlledS
     
     @FXML
     public void aoClicarBtnBuscarTodos(){
-        //Lista de Clientes
-        List<Cliente> listaCliente =  cliService.buscarTodos();
-        //Inserindo a lista de um Observable
-        final ObservableList<Cliente> dados = FXCollections.observableArrayList(listaCliente);
+        
+       
         
         tvClientes.setEditable(true);
         
-        TableColumn idcliente = new TableColumn("ID");
-        idcliente.setMinWidth(100);
-        idcliente.setCellValueFactory(
-                new PropertyValueFactory<Cliente, Integer>("idcliente"));
-        
-        
-        TableColumn nome = new TableColumn("Nome");
+        TableColumn nome = new TableColumn("nome");
         nome.setMinWidth(100);
         nome.setCellValueFactory(
                 new PropertyValueFactory<Cliente, String>("nome"));
  
-        TableColumn fone = new TableColumn("Fone");
+        TableColumn fone = new TableColumn("fone");
         fone.setMinWidth(100);
         fone.setCellValueFactory(
                 new PropertyValueFactory<Cliente, String>("fone"));
  
-        TableColumn email = new TableColumn("Email");
+        TableColumn email = new TableColumn("email");
         email.setMinWidth(200);
         email.setCellValueFactory(
                 new PropertyValueFactory<Cliente, String>("email"));
         
         
-        tvClientes.getColumns().addAll(idcliente, nome, fone, email);
+        tvClientes.getColumns().addAll(nome, fone, email);
+        
+        
+        //Lista de Clientes
+        List<Cliente> listaCliente =  cliService.buscarTodos();
+        //Inserindo a lista de um Observable
+        final ObservableList<Cliente> dados = FXCollections.observableArrayList(listaCliente);
+        
         tvClientes.setItems(dados);
    
        

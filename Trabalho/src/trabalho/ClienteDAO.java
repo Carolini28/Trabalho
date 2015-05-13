@@ -68,7 +68,7 @@ class ClienteDAO {
                 Cliente cli = new Cliente();
 
                 //Atribuindo dados do resultado no objeto cliente
-                cli.setId(resultado.getInt("idcliente"));
+                //cli.setId(resultado.getInt("idcliente"));
                 cli.setNome(resultado.getString("nome"));
                 cli.setFone(resultado.getString("fone"));
                 cli.setEmail(resultado.getString("email"));
@@ -79,7 +79,6 @@ class ClienteDAO {
             preparadorSQL.close();
             return lista;
         } catch (SQLException ex) {
-
             Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }

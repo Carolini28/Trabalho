@@ -10,7 +10,7 @@ package trabalho;
  *
  * @author ra143759
  */
-class Cliente {
+public class Cliente {
 
     private Integer id;
     private String nome;

@@ -63,7 +63,7 @@ public class PedidoDAO {
             
             
             
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
             Date date1 = formatter.parse(pedido.getDatapedido());
             Date date2 = formatter.parse(pedido.getDataevento());
             

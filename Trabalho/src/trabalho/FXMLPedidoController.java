@@ -120,8 +120,8 @@ public class FXMLPedidoController implements Initializable,  ControlledScreen {
         pedido.setCliente(cliente.getValue().toString());
         pedido.setEvento(evento.getValue().toString());
         
-        Idevento = pedidoService.buscaIdEvento(evento.toString());
-        Idcliente = pedidoService.buscaIdcliente(cliente.toString());
+        Idevento = pedidoService.buscaIdEvento(evento.getValue().toString());
+        Idcliente = pedidoService.buscaIdcliente(cliente.getValue().toString());
         
         pedido.setIdCliente(Idcliente);
         pedido.setIdEvento(Idevento);
@@ -154,10 +154,13 @@ public class FXMLPedidoController implements Initializable,  ControlledScreen {
         
         
         try {
+            System.out.println("cliente: " + cliente.getValue().toString());
+            System.out.println("evento: " + evento.getValue().toString());
             pedidoService.salvarPedido(pedido);
             //Mensagem
+            System.out.println("Pedido Salvo com Sucesso!");
             lbmsg.setText("Pedido Salvo com Sucesso!");
-            System.out.println("Salvo com Sucesso!");
+            
         } catch (ServiceException ex) {
             
             Logger.getLogger(FXMLPedidoController.class.getName()).log(Level.SEVERE, null, ex);
@@ -174,7 +177,7 @@ public class FXMLPedidoController implements Initializable,  ControlledScreen {
         IdProduto = pedidoService.buscaIdProduto(produto.getValue().toString());
         
         System.out.println("Idproduto: " + IdProduto);
-        System.out.println("produto: " + produto.getValue().toString());
+        System.out.println("produto: " + produto.toString().toString());
         System.out.println("Quantidade: " + quantidade.getText());
 
         item.setIdproduto(IdProduto);

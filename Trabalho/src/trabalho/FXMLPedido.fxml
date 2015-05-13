@@ -24,7 +24,7 @@
             <Label font="$x1" layoutX="14.0" layoutY="56.0" text="Data do Pedido:" />
             <AnchorPane id="AnchorPane" layoutX="119.0" layoutY="54.0">
               <children>
-                <TextField fx:id="dataPedido" layoutX="0.0" layoutY="0.0" prefWidth="166.0" />
+                <TextField  fx:id="dataPedido" layoutX="0.0" layoutY="0.0" prefWidth="166.0" />
               </children>
             </AnchorPane>
             <TextField fx:id="cerimonial" layoutX="119.0" layoutY="84.0" prefWidth="166.0" />

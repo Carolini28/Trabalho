@@ -1,0 +1,96 @@
+/*
+PGSQL Backup
+Source Server Version: 9.3.5
+Source Database: RADI
+Date: 13/05/2015 18:37:56
+*/
+
+
+-- ----------------------------
+--  Table structure for "public"."cliente"
+-- ----------------------------
+DROP TABLE "public"."cliente";
+CREATE TABLE "public"."cliente" (
+"idcliente" int4 DEFAULT nextval('cliente_idcliente_seq'::regclass) NOT NULL,
+"nome" varchar COLLATE "default" NOT NULL,
+"fone" varchar COLLATE "default" NOT NULL,
+"email" varchar COLLATE "default",
+PRIMARY KEY ("idcliente")
+)
+WITH (OIDS=FALSE)
+;;
+
+-- ----------------------------
+--  Table structure for "public"."itempedido"
+-- ----------------------------
+DROP TABLE "public"."itempedido";
+CREATE TABLE "public"."itempedido" (
+"iditempedido" int4 DEFAULT nextval('itempedido_iditempedido_seq'::regclass) NOT NULL,
+"quantidade" int4 NOT NULL,
+"valor" float8 NOT NULL,
+"idpedido" int4 NOT NULL,
+"idproduto" int4 NOT NULL,
+PRIMARY KEY ("iditempedido"),
+FOREIGN KEY ("idproduto") REFERENCES "public"."produto" ("idproduto") ON DELETE NO ACTION ON UPDATE NO ACTION,
+FOREIGN KEY ("idpedido") REFERENCES "public"."pedido" ("idpedido") ON DELETE NO ACTION ON UPDATE NO ACTION
+)
+WITH (OIDS=FALSE)
+;;
+
+-- ----------------------------
+--  Table structure for "public"."pedido"
+-- ----------------------------
+DROP TABLE "public"."pedido";
+CREATE TABLE "public"."pedido" (
+"idpedido" int4 DEFAULT nextval('pedido_idpedido_seq_1'::regclass) NOT NULL,
+"origempedido" varchar COLLATE "default" NOT NULL,
+"datapedido" date NOT NULL,
+"cerimonial" varchar COLLATE "default" NOT NULL,
+"dataevento" date NOT NULL,
+"horaevento" varchar COLLATE "default" NOT NULL,
+"indicacao" varchar COLLATE "default" NOT NULL,
+"endereco" varchar COLLATE "default" NOT NULL,
+"observacao" varchar COLLATE "default" NOT NULL,
+"localevento" varchar COLLATE "default" NOT NULL,
+"idcliente" int4 NOT NULL,
+"idtipoevento" int4 NOT NULL,
+PRIMARY KEY ("idpedido"),
+FOREIGN KEY ("idcliente") REFERENCES "public"."cliente" ("idcliente") ON DELETE NO ACTION ON UPDATE NO ACTION,
+FOREIGN KEY ("idtipoevento") REFERENCES "public"."tipoevento" ("idtipoevento") ON DELETE NO ACTION ON UPDATE NO ACTION
+)
+WITH (OIDS=FALSE)
+;;
+
+-- ----------------------------
+--  Table structure for "public"."produto"
+-- ----------------------------
+DROP TABLE "public"."produto";
+CREATE TABLE "public"."produto" (
+"idproduto" int4 DEFAULT nextval('produto_idproduto_seq'::regclass) NOT NULL,
+"descricao" varchar COLLATE "default" NOT NULL,
+"valor" varchar COLLATE "default" NOT NULL,
+PRIMARY KEY ("idproduto")
+)
+WITH (OIDS=FALSE)
+;;
+
+-- ----------------------------
+--  Table structure for "public"."tipoevento"
+-- ----------------------------
+DROP TABLE "public"."tipoevento";
+CREATE TABLE "public"."tipoevento" (
+"idtipoevento" int4 DEFAULT nextval('tipoevento_idtipoevento_seq'::regclass) NOT NULL,
+"descricao" varchar COLLATE "default" NOT NULL,
+PRIMARY KEY ("idtipoevento")
+)
+WITH (OIDS=FALSE)
+;;
+
+-- ----------------------------
+--  Records 
+-- ----------------------------
+INSERT INTO "public"."cliente" VALUES ('0','carolini','123','carolini@gmail'); INSERT INTO "public"."cliente" VALUES ('1','lucas','456','carolini@hotmail'); INSERT INTO "public"."cliente" VALUES ('2','joao','789','carolini@gmail'); INSERT INTO "public"."cliente" VALUES ('3','sonia','123456','sonia@gmail');
+INSERT INTO "public"."itempedido" VALUES ('0','2','5','11','2'); INSERT INTO "public"."itempedido" VALUES ('1','2','6','11','1'); INSERT INTO "public"."itempedido" VALUES ('2','4','20','11','3'); INSERT INTO "public"."itempedido" VALUES ('17','3','9','20','1'); INSERT INTO "public"."itempedido" VALUES ('18','1','2.5','20','2'); INSERT INTO "public"."itempedido" VALUES ('19','3','9','24','1'); INSERT INTO "public"."itempedido" VALUES ('20','1','2.5','24','2'); INSERT INTO "public"."itempedido" VALUES ('21','5','25','24','3');
+INSERT INTO "public"."pedido" VALUES ('1','er','2015-03-02','ghj','2015-03-02','12:00:00','rewr','rewe','erwer','wrwer','0','1'); INSERT INTO "public"."pedido" VALUES ('10','reunião','0007-07-08','reuniao','0007-07-08','12:00','cliente','rua3','obs1','local3','0','0'); INSERT INTO "public"."pedido" VALUES ('11','origem1','0007-07-08','cerimonial1','0007-07-08','13:00:12','cliente1','rua1','obs1','local1','0','0'); INSERT INTO "public"."pedido" VALUES ('12','origem1','2015-01-03','cerimonial','2015-01-03','12:00','ind1','rua1','obs1','local1','0','0'); INSERT INTO "public"."pedido" VALUES ('13','origem1','2015-01-03','cerimonial','2015-01-03','12:00','ind1','rua1','obs1','local1','0','0'); INSERT INTO "public"."pedido" VALUES ('14','origem1','2015-01-03','cerimonial','2015-01-03','12:00','ind1','rua1','obs1','local1','0','0'); INSERT INTO "public"."pedido" VALUES ('15','origem1','2015-01-03','cerimonial','2015-01-03','12:00','ind1','rua1','obs1','local1','0','0'); INSERT INTO "public"."pedido" VALUES ('16','origem1','2015-01-03','cerimonial','2015-01-03','12:00','ind1','rua1','obs1','local1','0','0'); INSERT INTO "public"."pedido" VALUES ('17','origem1','2015-01-03','cerimonial','2015-01-03','12:00','ind1','rua1','obs1','local1','0','0'); INSERT INTO "public"."pedido" VALUES ('18','origem1','2015-01-03','cerimonial','2015-01-03','12:00','ind1','rua1','obs1','local1','0','0'); INSERT INTO "public"."pedido" VALUES ('19','origem1','2015-01-03','cerimonial','2015-01-03','12:00','ind1','rua1','obs1','local1','0','0'); INSERT INTO "public"."pedido" VALUES ('20','origem1','2015-01-03','cerimonial','2015-01-03','12:00','ind1','rua1','obs1','local1','0','0'); INSERT INTO "public"."pedido" VALUES ('21','origem1','2015-01-03','cerimonial','2015-01-03','12:00','ind1','rua1','obs1','local1','0','0'); INSERT INTO "public"."pedido" VALUES ('22','ori1','2015-01-28','cerimonial','2015-01-28','13:00','indic','end1','obs','local1','0','0'); INSERT INTO "public"."pedido" VALUES ('23','pedido1','2015-01-28','cerimonial','2015-01-28','13:00','ind1','rua1','obs1','local1','0','0'); INSERT INTO "public"."pedido" VALUES ('24','origim','2015-01-28','cerimonial','2015-01-28','13:00','ind','rua3','obs2','loc1','2','2');
+INSERT INTO "public"."produto" VALUES ('1','bem casado','3.0'); INSERT INTO "public"."produto" VALUES ('2','brigadeiro','2.50'); INSERT INTO "public"."produto" VALUES ('3','Cupcakes','5.0');
+INSERT INTO "public"."tipoevento" VALUES ('0','casamento'); INSERT INTO "public"."tipoevento" VALUES ('1','reunião'); INSERT INTO "public"."tipoevento" VALUES ('2','aniversário');
